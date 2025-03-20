@@ -20,13 +20,14 @@ int main(int argc, char *argv[]) {
 
 	int firstByteDecimal = -1;
 	int secondByteDecimal = -1;
+	// I might do something interesting with these two at some point
 	int thirdByteDecimal = -1;
 	int fourthByteDecimal = -1;
 
 	// parse the bytes
 	sscanf(addr, "%d.%d.%d.%d", &firstByteDecimal, &secondByteDecimal, &thirdByteDecimal, &fourthByteDecimal);
 
-	// if a byte is negative or incomplete stop
+	// if a byte entered by the user is negative, or the users doesn't enter a proper one, stop
 	if (firstByteDecimal < 0 || secondByteDecimal < 0 || thirdByteDecimal < 0 || fourthByteDecimal < 0) {
 		printf("Bad address\n");
 		help();
@@ -57,10 +58,9 @@ int main(int argc, char *argv[]) {
 }
 
 char checkClass(int firstByteDecimal, int secondByteDecimal, int thirdByteDecimal, int fourthByteDecimal) {
-	// class f doesn't exist, this default is meant for debugging purposes
+	// class f doesn't exist, this default is meant to signal a bad ip address ( >255 )
 	char class = 'f';
 
-	// class a
 	if (firstByteDecimal < 128) {
 		class = 'a';
 	} else if (firstByteDecimal < 192) {
@@ -69,7 +69,7 @@ char checkClass(int firstByteDecimal, int secondByteDecimal, int thirdByteDecima
 		class = 'c';
 	} else if (firstByteDecimal < 240) {
 		class = 'd';
-	} else {
+	} else if (firstByteDecimal < 255) {
 		class = 'e';
 	}
 	return class;
