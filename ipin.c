@@ -70,7 +70,7 @@ char checkClass(int firstByteDecimal, int secondByteDecimal, int thirdByteDecima
 	} else if (firstByteDecimal < 255) {
 		return 'e';
 	}
-	// class f doesn't exist, this default is meant to signal a bad ip address ( >255 )
+	// class f doesn't exist, this default is meant to signal a bad ip address ( >=255 )
 	return 'f';
 }
 
