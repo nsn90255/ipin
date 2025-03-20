@@ -75,20 +75,19 @@ char checkClass(int firstByteDecimal, int secondByteDecimal, int thirdByteDecima
 }
 
 int checkPrivacy(int firstByteDecimal, int secondByteDecimal) {
-	int privacy = 0;
 	// check class a
 	if (firstByteDecimal == 10) {
-		privacy = 1;
+		return 1;
 	}
 	// check class b
 	if (firstByteDecimal == 172 && secondByteDecimal > 15 && secondByteDecimal < 32) {
-		privacy = 1;
+		return 1;
 	}
 	// check class c
 	if (firstByteDecimal == 192 && secondByteDecimal == 168) {
-		privacy = 1;
+		return 1;
 	}
-	return privacy;
+	return 0;
 }
 
 void help() {
