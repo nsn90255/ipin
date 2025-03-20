@@ -58,21 +58,20 @@ int main(int argc, char *argv[]) {
 }
 
 char checkClass(int firstByteDecimal, int secondByteDecimal, int thirdByteDecimal, int fourthByteDecimal) {
-	// class f doesn't exist, this default is meant to signal a bad ip address ( >255 )
-	char class = 'f';
 
 	if (firstByteDecimal < 128) {
-		class = 'a';
+		return 'a';
 	} else if (firstByteDecimal < 192) {
-		class = 'b';
+		return 'b';
 	} else if (firstByteDecimal < 224) {
-		class = 'c';
+		return 'c';
 	} else if (firstByteDecimal < 240) {
-		class = 'd';
+		return 'd';
 	} else if (firstByteDecimal < 255) {
-		class = 'e';
+		return 'e';
 	}
-	return class;
+	// class f doesn't exist, this default is meant to signal a bad ip address ( >255 )
+	return 'f';
 }
 
 int checkPrivacy(int firstByteDecimal, int secondByteDecimal) {
