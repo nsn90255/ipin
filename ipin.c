@@ -27,7 +27,7 @@ int main(int argc, char *argv[]) {
 	// parse the bytes
 	sscanf(addr, "%d.%d.%d.%d", &firstByteDecimal, &secondByteDecimal, &thirdByteDecimal, &fourthByteDecimal);
 
-	// if a byte entered by the user is negative, or the users doesn't enter a proper one, stop
+	// if a byte entered by the user is negative, or the user doesn't enter a proper one, stop
 	if (firstByteDecimal < 0 || secondByteDecimal < 0 || thirdByteDecimal < 0 || fourthByteDecimal < 0) {
 		printf("Bad address\n");
 		help();
